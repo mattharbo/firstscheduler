@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_15_070551) do
+ActiveRecord::Schema.define(version: 2021_12_15_071252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "fixtures", force: :cascade do |t|
+    t.bigint "hometeam_id", null: false
+    t.bigint "awayteam_id", null: false
+    t.integer "scorehome"
+    t.integer "scoreaway"
+    t.date "date"
+    t.time "time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["awayteam_id"], name: "index_fixtures_on_awayteam_id"
+    t.index ["hometeam_id"], name: "index_fixtures_on_hometeam_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string "description"
@@ -28,4 +41,6 @@ ActiveRecord::Schema.define(version: 2021_12_15_070551) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "fixtures", "teams", column: "awayteam_id"
+  add_foreign_key "fixtures", "teams", column: "hometeam_id"
 end
