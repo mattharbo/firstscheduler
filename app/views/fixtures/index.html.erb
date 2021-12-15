@@ -1,0 +1,12 @@
+<h2>All fixtures:</h2>
+
+<%@fixtures.each do |fixture|%>
+	<b><%=fixture.hometeam.name%></b>
+	vs.
+	<b><%=fixture.awayteam.name%></b> 
+	| <%=fixture.date%> 
+	@ <%=fixture.time.to_s(:time)%>
+	<br>
+<%end%>
+
+<!-- insert date to fixture => game.date="2022-02-15" -->

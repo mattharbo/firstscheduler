@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   root to: 'posts#index'
   resources :teams, only: [:index]
+  resources :fixtures, only: [:index]
 end
