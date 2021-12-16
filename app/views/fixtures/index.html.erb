@@ -5,8 +5,6 @@
 	vs.
 	<b><%=fixture.awayteam.name%></b> 
 	| <%=fixture.date%> 
-	@ <%=fixture.time.to_s(:time)%>
+	@ <%= fixture.time.present? ? fixture.time.to_s(:time) : "No time available" %>
 	<br>
 <%end%>
-
-<!-- insert date to fixture => game.date="2022-02-15" -->
