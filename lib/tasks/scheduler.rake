@@ -6,9 +6,8 @@ end
 
 desc "Insert Premiere League Game(s) of the day"
 task retrieve_premiere_league_gotd: :environment do
-  puts "Premiere League game retrieved"
 
-  def soccerapicall(league, date)
+  	def soccerapicall(league, date)
 
 		# Ligue 1 ===> 61
 		# Premiere league ===> 39
@@ -50,21 +49,23 @@ task retrieve_premiere_league_gotd: :environment do
 		return targetteam
 	end
 
-	soccerapicall(39,'#{Time.now.year}-#{Time.now.month}-#{Time.now.day}') 
+	soccerapicall(39,"#{Time.now.year}"+"-"+"#{Time.now.month}"+"-"+"#{Time.now.day}") 
 
 	if @apiresponse["results"]!=0
 
- 			@apiresponse["response"].each do |fixture|
+			@apiresponse["response"].each do |fixture|
 
- 				hometeam=checkteamname(fixture["teams"]["home"]["name"])
- 				awayteam=checkteamname(fixture["teams"]["away"]["name"])
- 				Fixture.create(
- 					hometeam:hometeam,
- 					awayteam:awayteam,
- 					date:fixture["fixture"]["date"]
- 					)
+			hometeam=checkteamname(fixture["teams"]["home"]["name"])
+			awayteam=checkteamname(fixture["teams"]["away"]["name"])
+			Fixture.create(
+				hometeam:hometeam,
+				awayteam:awayteam,
+				date:fixture["fixture"]["date"]
+				)
 
- 			end
- 		end
+		end
+	end
+
+	puts "Premiere League game retrieved"
 
 end
