@@ -9,9 +9,13 @@ task retrieve_premiere_league_gotd: :environment do
 
 			hometeam=checkteamname(fixture["teams"]["home"]["name"])
 			awayteam=checkteamname(fixture["teams"]["away"]["name"])
+			scorehome=fixture["goals"]["home"]
+			scoreaway=fixture["goals"]["away"]
 			Fixture.create(
 				hometeam:hometeam,
 				awayteam:awayteam,
+				scorehome:scorehome,
+				scoreaway:scoreaway,
 				date:fixture["fixture"]["date"]
 				)
 
