@@ -1,7 +1,7 @@
 <center>
 
-<h2>Latest game registrered</h2>
-
-<%=@lastestfixture.hometeam.name%> vs. <%=@lastestfixture.awayteam.name%>
+<%@posts.each do |post|%>
+	<%=post.description%> | <%=post.updated_at%> <br>
+<%end%>
 
 </center>

@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-  	@lastestfixture=Fixture.last
+  	@posts=Post.all
   end
 end

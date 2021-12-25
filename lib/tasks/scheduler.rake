@@ -1,3 +1,10 @@
+desc "Insert new post in DB"
+task newpost: :environment do
+
+	Post.create(description:"Salut Matthieu")
+
+end
+
 desc "Insert Premiere League Game(s) of the day"
 task retrieve_premiere_league_gotd: :environment do
 
