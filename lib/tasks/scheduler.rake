@@ -8,7 +8,8 @@ end
 desc "Insert Premiere League Game(s) of the day"
 task retrieve_premiere_league_gotd: :environment do
 
-	soccerapicall(39,"#{Time.now.year}"+"-"+"#{Time.now.month}"+"-"+"#{Time.now.day-1}") 
+	soccerapicall(39,"#{Time.now.year}"+"-"+"#{sprintf('%02i', Time.now.month)}"+"-"+"#{sprintf('%02i', Time.now.day-1)}") 
+	
 
 	if @apiresponse["results"]!=0
 
