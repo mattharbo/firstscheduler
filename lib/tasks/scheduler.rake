@@ -36,7 +36,7 @@ end
 desc "Insert Ligue 1 Game(s) of the day"
 task retrieve_ligue_1_gotd: :environment do
 
-	soccerapicall(61,"#{Time.now.year}"+"-"+"#{Time.now.month}"+"-"+"#{Time.now.day-1}") 
+	soccerapicall(61,"#{Time.now.year}"+"-"+"#{sprintf('%02i', Time.now.month)}"+"-"+"#{sprintf('%02i', Time.now.day-1)}") 
 	# soccerapicall(61,"2021-12-05") 
 
 	if @apiresponse["results"]!=0
